@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>India Weather Heatmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 100vh; width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
+  <script>
+    const heatArray = [
+  [28.6139, 77.2090, 0.68],  // Delhi (27°C)
+  [19.0760, 72.8777, 0.68],  // Mumbai
+  [13.0827, 80.2707, 0.75],  // Chennai
+  [22.5726, 88.3639, 0.70],  // Kolkata
+  [12.9716, 77.5946, 0.63],  // Bengaluru
+  [23.0225, 72.5714, 0.78],  // Ahmedabad
+  [26.9124, 75.7873, 0.70],  // Jaipur
+  [25.3176, 82.9739, 0.68],  // Varanasi
+  [17.3850, 78.4867, 0.70],  // Hyderabad
+  [21.1702, 72.8311, 0.72],  // Surat
+  [15.2993, 74.1240, 0.70],  // Goa
+  [9.9312, 76.2673, 0.60],   // Kochi
+  [34.0837, 74.7973, 0.55],  // Srinagar
+  [32.7266, 74.8570, 0.58],  // Jammu
+  [18.5204, 73.8567, 0.68],  // Pune
+  [22.7196, 75.8577, 0.72],  // Indore
+  [24.5854, 73.7125, 0.65],  // Udaipur
+  [21.1458, 79.0882, 0.70],  // Nagpur
+  [23.2599, 77.4126, 0.63],  // Bhopal
+  [20.2961, 85.8245, 0.68],  // Bhubaneswar
+  [27.1767, 78.0081, 0.65],  // Agra
+  [25.5941, 85.1376, 0.68],  // Patna
+  [26.8467, 80.9462, 0.65],  // Lucknow
+  [31.1048, 77.1734, 0.58],  // Shimla
+  [11.0168, 76.9558, 0.68],  // Coimbatore
+  [27.3352, 88.6140, 0.52],  // Gangtok
+  [25.4358, 81.8463, 0.70],  // Prayagraj
+  [16.5062, 80.6480, 0.70],  // Vijayawada
+  [18.1124, 83.3956, 0.73],  // Visakhapatnam
+  [24.5854, 73.7125, 0.60],  // Mount Abu
+  [26.4499, 80.3319, 0.68],  // Kanpur
+  [19.2183, 72.9781, 0.73],  // Navi Mumbai
+  [22.8056, 86.2029, 0.68],  // Jamshedpur
+  [21.2514, 81.6296, 0.60],  // Raipur
+  [26.6835, 88.3953, 0.60],  // Siliguri
+  [22.9868, 87.8550, 0.66],  // Asansol
+  [30.7333, 76.7794, 0.62],  // Chandigarh
+  [28.9845, 77.7064, 0.68],  // Meerut
+  [19.8762, 75.3433, 0.66],  // Aurangabad
+  [28.4089, 77.3178, 0.68],  // Gurgaon
+  [19.2183, 73.1645, 0.70],  // Kalyan-Dombivli
+  [11.2588, 75.7804, 0.61],  // Kozhikode
+  [17.6868, 83.2185, 0.72],  // Vizag
+  [24.8887, 74.6269, 0.66],  // Banswara
+  [27.4930, 77.6737, 0.65],  // Mathura
+  [29.9457, 78.1642, 0.65],  // Haridwar
+  [26.2681, 73.0032, 0.70],  // Pali
+  [20.9050, 70.3690, 0.67],  // Veraval
+  [20.5890, 74.4197, 0.68],  // Nashik
+  [24.2644, 86.6460, 0.66],  // Dhanbad
+  [26.7606, 83.3732, 0.67],  // Gorakhpur
+  [26.9124, 75.7873, 0.68]   // Jaipur (again, center anchor)
+];
+
+
+    const map = L.map('map').setView([23.5, 80], 5.2);
+
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.heatLayer(heatArray, {
+      radius: 40,
+      blur: 25,
+      maxZoom: 7
+    }).addTo(map);
+  </script>
+</body>
+</html>
